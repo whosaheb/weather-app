@@ -1,26 +1,16 @@
-module.exports = app => {
-    const weather = require("../controllers/weatherRecord");
+const express = require("express");
+const router = express.Router();
 
-    var router = require("express").Router();
+const {read, create, update, remove} = require("../controllers/weatherRecord");
 
-    // Create a new Location
-    router.post("/", weather.create);
-
-    // Retrieve all Location
-    router.get("/", weather.findAll);
-
-    // Retrieve a single Location with id
-    router.get("/:id", weather.findOne);
-
-    // Update a Location with id
-    router.put("/:id", weather.update);
-
-    // Delete a Location with id
-    router.delete("/:id", weather.delete);
-
-    // Delete all Location
-    router.delete("/", weather.deleteAll);
+// const { requireLogin, isAdmin, isAuth } = require("../controllers/auth");
 
 
-    app.use('/weather/record', router);
-}
+router.post('/', create);
+// router.get('/', requireLogin, getall);
+router.get('/', read);
+router.put('/', update);
+router.delete('/', remove);
+
+
+module.exports = router;
