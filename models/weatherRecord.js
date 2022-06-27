@@ -1,38 +1,21 @@
-const dbQuery = require("./db");
+var database = require('./db');  // importing connection database
+var { DataTypes } = require('sequelize');
 
-async function postWeather(val) {
-    try {
-        const result = await dbQuery(`INSERT INTO weather_report (state, temp, pressure, humidity) values (${val.state}, ${val.temp}, ${val.pressure}, ${val.humidity})`);
-        return result;
-    } catch(error) {
-        console.error(error);
-    }
-}
+var Weather = database.define('weather_report', 
+    {
+        id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true,
+        },
+        state: DataTypes.STRING,
+        temp: DataTypes.FLOAT,
+        pressure: DataTypes.INTEGER,
+        humidity: DataTypes.INTEGER,
+    },
+    { timestamps:true }
+);
 
-async function getWeather() {
-    try {
-        const result = await dbQuery(`SELECT * FROM weather_report`);
-        return result;
-    } catch(error) {
-        console.error(error);
-    }
-}
+Weather.sync()
 
-async function updateWeather(params) {
-    try {
-        const result = await dbQuery("UPDATE `weather_report` SET `state` = '" + params.state + "', `temp` = '"+params.temp+"', `pressure` = "+params.pressure+", `humidity` = "+params.humidity+" WHERE `weather_report`.`id` = "+params.id);
-        return result;
-    } catch(error) {
-        console.error(error);
-    }
-}
-async function deleteWeather(params) {
-    try {
-        const result = await dbQuery("DELETE FROM `weather_report` WHERE `weather_report`.`id` = " + params.id);
-        return result;
-    } catch(error) {
-        console.error();(error);
-    }
-}
-
-module.exports = {postWeather, getWeather, updateWeather, deleteWeather};
+module.exports = Weather;

@@ -1,0 +1,27 @@
+### server check
+GET http://localhost:2000
+
+### read weather report
+GET http://localhost:2000/api/weather-reports/
+
+### create weather report
+POST http://localhost:2000/api/weather-report HTTP/1.1
+Content-Type: application/json
+
+{
+    "state": "west bengal",
+    "temp":34.23,
+    "pressure":921,
+    "humidity":45
+}
+
+### Update weather report
+PUT http://localhost:2000/api/weather-report/1/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "temp":22.23
+}
+
+### Delete weather report
+DELETE http://localhost:2000/api/weather-report/1/ HTTP/1.1

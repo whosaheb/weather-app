@@ -1,41 +1,51 @@
-const {getWeather, postWeather, updateWeather, deleteWeather} = require("../models/weatherRecord");
+const Weather = require("../models/weatherRecord");
 
-async function read(req, res, next) {
+const list = async (req, res) => {
     try {
-        res.json(await getWeather());
+        let result = await Weather.findAll();
+        res.json({status:'ok', message: 'success', result});
+
     } catch (err) {
         console.error(`Error while getting Weather Report`, err.message);
-        next(err);
+        res.status(504).json({status:'refuse', message: "Server can't handle your request."})
     }
 };
 
-async function create(req, res, next) {
-    console.log(req.body+"ihjg");
+const create = async (req, res) => {
     try {
-        res.json(await postWeather(req.body));
-        
+        let data = req.body;
+        let result = await Weather.create(data);
+        res.json({status:'ok', message: 'success', result});
+
     } catch (err) {
         console.error(`Error while getting Weather Report`, err.message);
-        next(err);
+        res.status(504).json({status:'refuse', message: "Server can't handle your request."})
     }
 };
 
-async function update(req, res, next) {
+const update = async (req, res) => {
     try {
-        res.json(await updateWeather(req.body));
+        let id = {id: req.params.id};
+        let data = req.body;
+        let result = await Weather.update(data, {where: id});
+        res.json({status:'ok', message: 'success', result});
+
     } catch (err) {
         console.error(`Error while getting Weather Report`, err.message);
-        next(err);
+        res.status(504).json({status:'refuse', message: "Server can't handle your request."})
     }
 };
 
-async function remove(req, res, next) {
+const remove = async (req, res) => {
     try {
-        res.json(await deleteWeather(req.query));
+        let id = {id: req.params.id};
+        let result = await Weather.destroy({where: id });
+        res.json({status:'ok', message: 'success', result});
+
     } catch (err) {
         console.error(`Error while getting Weather Report`, err.message);
-        next(err);
+        res.status(504).json({status:'refuse', message: "Server can't handle your request."})
     }
 };
 
-module.exports = {read, create, update, remove};
+module.exports = {list, create, update, remove};
