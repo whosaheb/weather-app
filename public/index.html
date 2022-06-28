@@ -5,52 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/main.css">
-    <script src="/main.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 <body>
     <h2>Weather Report Table</h2>
 
     <table id="tabledata">
+      
       <tr>
-        <th>Location</th>
-        <th>Temparature</th>
-        <th>Pressure</th>
-        <th>Humidity</th>
-        <th>Time</th>
+        <td>Alfreds Futterkiste</td>
+        <td>45.7</td>
+        <td>100487</td>
+        <td>87</td>
+        <td>27-01-2022</td>
       </tr>
       <tr>
         <td>Alfreds Futterkiste</td>
-        <td>Maria Anders</td>
-        <td>Germany</td>
-      </tr>
-      <tr>
-        <td>Centro comercial Moctezuma</td>
-        <td>Francisco Chang</td>
-        <td>Mexico</td>
-      </tr>
-      <tr>
-        <td>Ernst Handel</td>
-        <td>Roland Mendel</td>
-        <td>Austria</td>
-      </tr>
-      <tr>
-        <td>Island Trading</td>
-        <td>Helen Bennett</td>
-        <td>UK</td>
-      </tr>
-      <tr>
-        <td>Laughing Bacchus Winecellars</td>
-        <td>Yoshi Tannamuri</td>
-        <td>Canada</td>
-      </tr>
-      <tr>
-        <td>Magazzini Alimentari Riuniti</td>
-        <td>Giovanni Rovelli</td>
-        <td>Italy</td>
+        <td>45.7</td>
+        <td>100487</td>
+        <td>87</td>
+        <td>27-01-2022</td>
       </tr>
     </table>
-    
+    <br/>
+    <div style="text-align: center;">
+      <input type="button" value="&#60;&#60;" onclick="prev()">
+      <input type="text" name="lmt" id="lmt" placeholder="limit:10" style="width: 59px;">
+      <input type="hidden" name="page" value="1">
+      <input type="hidden" name="limit" value="10">
+      <input type="button" value="&#62;&#62;" onclick="next()">
+    </div>
 
 </body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="/main.js"></script>
 </html>

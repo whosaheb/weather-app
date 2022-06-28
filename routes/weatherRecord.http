@@ -2,7 +2,7 @@
 GET http://localhost:2000
 
 ### read weather report
-GET http://localhost:2000/api/weather-reports/
+GET http://localhost:2000/api/weather-reports?page=1&limit=2&state=Assam
 
 ### create weather report
 POST http://localhost:2000/api/weather-report HTTP/1.1

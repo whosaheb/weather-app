@@ -18,19 +18,14 @@ app.use(bodyParser.urlencoded({ extended: true}));
 app.use(cors({origin: HOST + ":" + PORT}));
 ////////////////////////////////////////////////////////////////
 
-
-app.get('/',(req,res)=>{
-  res.send(JSON.stringify({"message":"Ok, I am working.."}))
-});
-
 app.use('/api', weatherRoute);
 
-// // Static Files
-// app.use(express.static('public'));
-// // sendFile will go here
-// app.get('/', function(req, res) {
-//   res.sendFile(path.join(__dirname, 'public/index.html'));
-// });
+// Static Files
+app.use(express.static('public'));
+// sendFile will go here
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname, 'public/index.html'));
+});
 
 
 app.listen(PORT, () => {
