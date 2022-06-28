@@ -1,0 +1,7 @@
+HOST=127.0.0.1
+PORT=2000
+DB_HOST=127.0.0.1
+DB_USER=root
+DB_PASSWORD=
+DB_NAME=weather_app
+WEATHER_API=f049afd17da672387exxxxxxxxxxxxxx
